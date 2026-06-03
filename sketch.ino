@@ -5,13 +5,12 @@ MPU6050 mpu;
 
 const int LED_PIN = 2;
 
-// Adjust based on your Wokwi testing
 const float Y_THRESHOLD = 0.3;
 
-const unsigned long REQUIRED_TIME = 5000; // 5 seconds
-const unsigned long LED_TIME = 2000;      // 2 seconds
+const unsigned long REQUIRED_TIME = 5000; 
+const unsigned long LED_TIME = 2000;     
 
-int lastDirection = 0; // -1, 0, +1
+int lastDirection = 0;
 bool tracking = false;
 unsigned long trackingStart = 0;
 
@@ -44,7 +43,7 @@ void loop() {
   else if (y < -Y_THRESHOLD)
     currentDirection = -1;
 
-  // LED timer
+ 
   if (ledOn) {
     if (millis() - ledStart >= LED_TIME) {
       ledOn = false;
@@ -58,7 +57,7 @@ void loop() {
     return;
   }
 
-  // Detect direction changes
+
   if (currentDirection != 0 && currentDirection != lastDirection) {
 
     if (!tracking) {
@@ -70,7 +69,7 @@ void loop() {
     lastDirection = currentDirection;
   }
 
-  // Check if oscillation lasted 5 sec
+  
   if (tracking) {
 
     unsigned long elapsed = millis() - trackingStart;
