@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -63.38, "left": -189.68, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 73.2,
+      "left": -178.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": -96,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "r1:1", "led1:A", "green", [ "v0" ] ],
+    [ "r1:2", "esp:2", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v9.6", "h86.48", "v57.6" ] ],
+    [ "imu1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "imu1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "imu1:SCL", "esp:22", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
